@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -18,12 +19,12 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <div className="flex items-center">
+            <Link href="/" className="flex items-center">
               <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">BR</span>
               </div>
               <span className="ml-2 text-xl font-bold text-gray-900">Barber Reminder Pro</span>
-            </div>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -38,6 +39,12 @@ export default function Navbar() {
                   {item.name}
                 </a>
               ))}
+              <Link
+                href="/dashboard"
+                className="text-primary-600 hover:text-primary-700 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              >
+                Dashboard
+              </Link>
             </div>
           </div>
 
@@ -80,6 +87,13 @@ export default function Navbar() {
                 {item.name}
               </a>
             ))}
+            <Link
+              href="/dashboard"
+              className="text-primary-600 hover:text-primary-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Dashboard
+            </Link>
             <div className="pt-4">
               <button className="btn-primary w-full">
                 Join Waitlist
